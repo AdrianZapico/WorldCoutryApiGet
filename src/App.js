@@ -1,10 +1,15 @@
 import React from "react";
-import WorldTimeCurl from "./components/WorldTimeCurl";
+import { BrowserRouter } from "react-router-dom";
+import Switch from "./routes/Switch";
 
 function App() {
   return (
  <>
-<WorldTimeCurl/>
+
+<BrowserRouter>
+
+<Switch/>
+    </BrowserRouter>
 
  </>
   );
