@@ -1,13 +1,17 @@
 import React from "react";
 import WorldTimeCurl from "../components/WorldTimeCurl";
+import { Link, Outlet } from "react-router-dom"
 
-
-
-export default function Users(){
-    return(
+export default function Users() {
+    return (
         <>
-       <WorldTimeCurl/>
-       
+            <Link className="linkRouter" to="/timezone">
+                <button>World Cities</button>
+            </Link>
+
+            <WorldTimeCurl />
+        <Outlet/>
+
         </>
     )
 }
