@@ -1,37 +1,49 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {AfricaLinks} from "./styles"
-import AfricaData from "./AfricaData.json"
-import citiesname from "./citiesname.json"
+
+
 
 
 export default function Africa(props) {
 
     const [africaTime, setAfrica] = useState([])
+    const [city, setCity] = useState('')
+    const url = `http://worldtimeapi.org/api/timezone/`
+    const  handleTimeClick = (e) =>{
+    
+        setCity(`${url}/${props.timezone}/${e.target.innerHTML}`)
+        fetch(city)
+        .then(response => response.json())
+        .then(data => alert(data.datetime))
+    }
 
     useEffect(() => {
-        fetch(`http://worldtimeapi.org/api/timezone/Africa/`)
+        fetch(`http://worldtimeapi.org/api/timezone/${props.timezone}/`)
             .then(response => response.json())
             .then(data => setAfrica(data))
     }, [])
 
-  
-
-    const url = `http://worldtimeapi.org/api/timezone/`
-    
+ 
     return (
         
         <>
-            {console.log()}
+            
             <h1>{props.title}</h1>
-
-            {citiesname.map(object => {
             
-            
+            {africaTime.map(object => {
+       
                 return (
-                    
-                    
-                    <div><AfricaLinks href={url + AfricaData }>{object}</AfricaLinks></div>
+
+                    <div>
+                        <AfricaLinks onClick={handleTimeClick}>
+                        {object.split('/')[1]}
+                        
+                        {object.split('/')[2] &&
+                         `/${object.split('/')[2]}`
+                        }
+                        </AfricaLinks>
+                    </div>
                 )
             })
 

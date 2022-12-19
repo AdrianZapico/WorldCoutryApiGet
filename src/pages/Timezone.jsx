@@ -19,7 +19,16 @@ export default function Timezone() {
             <GranBox>
                 <TopTitle>Time Zone Regions</TopTitle>
                 <BoxTimezone>
-                    <Africa title="Africa" />
+                    {
+                       
+                        <>
+                        <Africa title="Africa" timezone="Africa" />
+                        <Africa title="America" timezone="America" />
+                        </>
+                       
+                       
+                    }
+                    
                 </BoxTimezone>
 
                 {/* <BoxTimezone>
